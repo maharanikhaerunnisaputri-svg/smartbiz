@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartBiz — Inovasi Digital untuk Solusi Ekonomi Modern</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #050d1a;
+    --navy2: #0a1628;
+    --navy3: #0f2040;
+    --blue: #0ea5e9;
+    --neon: #38bdf8;
+    --neon2: #7dd3fc;
+    --purple: #8b5cf6;
+    --purple2: #a78bfa;
+    --cyan: #06b6d4;
+    --white: #f0f9ff;
+    --white2: #e0f2fe;
+    --gray: #94a3b8;
+    --grad1: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+    --grad2: linear-gradient(135deg, #06b6d4, #0ea5e9);
+    --grad3: linear-gradient(135deg, #8b5cf6, #ec4899);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
+
+  /* ---- PARTICLES BG ---- */
+  #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 5%;
+    background: rgba(5,13,26,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(14,165,233,0.1);
+    transition: all 0.3s;
+  }
+  nav.scrolled { background: rgba(5,13,26,0.95); }
+  .logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 800; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--gray); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--neon); }
+  .nav-cta {
+    background: var(--grad1); color: #fff; border: none; padding: 0.6rem 1.4rem;
+    border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem;
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 0 20px rgba(14,165,233,0.3);
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(14,165,233,0.5); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--neon); border-radius: 2px; transition: all 0.3s; }
+
+  /* ---- HERO ---- */
+  #hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 7rem 5% 4rem; z-index: 1;
+    overflow: hidden;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.3);
+    padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; color: var(--neon);
+    margin-bottom: 1.5rem; animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge .dot { width: 6px; height: 6px; background: var(--neon); border-radius: 50%; animation: pulse 1.5s infinite; }
+  .hero-title {
+    font-size: clamp(2.8rem, 8vw, 6rem); font-weight: 800; line-height: 1.05;
+    margin-bottom: 1.5rem; animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-title .line1 { display: block; color: var(--white); }
+  .hero-title .line2 { display: block; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-title .line3 { display: block; color: var(--white2); font-size: 0.65em; font-weight: 300; font-family: 'DM Sans', sans-serif; margin-top: 0.5rem; }
+  .hero-desc { max-width: 600px; color: var(--gray); font-size: 1.1rem; margin-bottom: 2.5rem; animation: fadeUp 0.8s 0.2s ease both; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.8s 0.3s ease both; }
+  .btn-primary {
+    background: var(--grad1); color: #fff; border: none; padding: 1rem 2rem;
+    border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
+    cursor: pointer; transition: all 0.3s; box-shadow: 0 0 30px rgba(14,165,233,0.4);
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(14,165,233,0.6); }
+  .btn-secondary {
+    background: transparent; color: var(--neon); border: 1px solid rgba(14,165,233,0.4);
+    padding: 1rem 2rem; border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 600;
+    cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; font-size: 1rem;
+  }
+  .btn-secondary:hover { background: rgba(14,165,233,0.1); border-color: var(--neon); transform: translateY(-3px); }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; animation: fadeUp 0.8s 0.4s ease both; flex-wrap: wrap; justify-content: center; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .stat-label { color: var(--gray); font-size: 0.85rem; }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+  .orb1 { width: 500px; height: 500px; background: rgba(14,165,233,0.12); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
+  .orb2 { width: 400px; height: 400px; background: rgba(139,92,246,0.1); bottom: -100px; left: -100px; animation: float 10s ease-in-out infinite reverse; }
+  .orb3 { width: 300px; height: 300px; background: rgba(6,182,212,0.08); top: 50%; left: 50%; transform: translate(-50%,-50%); animation: pulse2 6s ease-in-out infinite; }
+
+  /* ---- SECTION COMMON ---- */
+  section { position: relative; z-index: 1; padding: 6rem 5%; }
+  .section-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; color: var(--neon); text-transform: uppercase; margin-bottom: 1rem; }
+  .section-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+  .section-title span { background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .section-desc { color: var(--gray); max-width: 600px; font-size: 1.05rem; }
+  .section-header { margin-bottom: 4rem; }
+
+  /* ---- SOLUTIONS ---- */
+  #solutions { background: linear-gradient(to bottom, var(--navy), var(--navy2)); }
+  .solutions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .sol-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.1);
+    border-radius: 20px; padding: 2rem; cursor: pointer;
+    transition: all 0.4s; position: relative; overflow: hidden;
+  }
+  .sol-card::before {
+    content: ''; position: absolute; inset: 0; background: var(--grad1);
+    opacity: 0; transition: opacity 0.4s; border-radius: 20px;
+  }
+  .sol-card:hover { transform: translateY(-8px); border-color: rgba(14,165,233,0.4); box-shadow: 0 20px 60px rgba(14,165,233,0.15); }
+  .sol-card:hover::before { opacity: 0.05; }
+  .sol-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.2rem; position: relative; }
+  .sol-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; position: relative; }
+  .sol-card p { color: var(--gray); font-size: 0.9rem; line-height: 1.7; position: relative; }
+  .sol-tag { display: inline-block; margin-top: 1rem; font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 50px; border: 1px solid; position: relative; }
+
+  /* ---- TOOLS ANALYZER ---- */
+  #tools { background: var(--navy2); }
+  .tools-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .analyzer-box {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.15);
+    border-radius: 24px; padding: 2.5rem;
+  }
+  .analyzer-box h3 { font-size: 1.3rem; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; color: var(--gray); font-size: 0.85rem; margin-bottom: 0.4rem; }
+  .form-group select, .form-group input[type="range"] { width: 100%; }
+  .form-group select {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(14,165,233,0.2);
+    color: var(--white); padding: 0.7rem 1rem; border-radius: 10px; font-size: 0.9rem;
+    outline: none; width: 100%; transition: border-color 0.3s;
+  }
+  .form-group select:focus { border-color: var(--neon); }
+  .form-group select option { background: var(--navy2); }
+  .range-wrap { display: flex; align-items: center; gap: 1rem; }
+  .range-wrap input { flex: 1; accent-color: var(--blue); }
+  .range-val { color: var(--neon); font-weight: 600; font-size: 0.9rem; min-width: 60px; }
+  .analyze-btn {
+    width: 100%; background: var(--grad1); color: #fff; border: none;
+    padding: 1rem; border-radius: 12px; font-family: 'Poppins', sans-serif;
+    font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s;
+    margin-top: 0.5rem;
+  }
+  .analyze-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(14,165,233,0.4); }
+  .result-box {
+    background: rgba(14,165,233,0.05); border: 1px solid rgba(14,165,233,0.2);
+    border-radius: 16px; padding: 1.5rem; margin-top: 1.5rem; display: none;
+  }
+  .result-box h4 { color: var(--neon); font-size: 1rem; margin-bottom: 1rem; }
+  .result-item { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .result-item:last-child { border-bottom: none; }
+  .result-item span:first-child { color: var(--gray); font-size: 0.9rem; }
+  .result-item span:last-child { font-weight: 600; font-size: 0.9rem; }
+  .score-bar-wrap { margin-top: 1rem; }
+  .score-bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 50px; overflow: hidden; margin-top: 0.3rem; }
+  .score-fill { height: 100%; background: var(--grad1); border-radius: 50px; transition: width 1s ease; }
+  .info-cards { display: grid; gap: 1rem; }
+  .info-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.1); border-radius: 16px; padding: 1.5rem; }
+  .info-card h4 { font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--neon2); }
+  .info-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.6; }
+
+  /* ---- KONSULTASI ---- */
+  #konsultasi { background: linear-gradient(to bottom, var(--navy2), var(--navy3)); }
+  .konsultasi-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .konsultasi-info h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; }
+  .konsultasi-info p { color: var(--gray); margin-bottom: 2rem; }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .feature-list li { display: flex; align-items: center; gap: 0.8rem; color: var(--white2); font-size: 0.95rem; }
+  .feature-list li::before { content: ''; width: 20px; height: 20px; min-width: 20px; background: var(--grad1); border-radius: 50%; display: flex; align-items: center; justify-content: center; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E"); background-size: 12px; background-repeat: no-repeat; background-position: center; }
+  .konsultasi-form-box {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.15);
+    border-radius: 24px; padding: 2.5rem;
+  }
+  .konsultasi-form-box h3 { font-size: 1.3rem; margin-bottom: 1.8rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { margin-bottom: 1.2rem; }
+  .form-field label { display: block; color: var(--gray); font-size: 0.82rem; font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-field input, .form-field select, .form-field textarea {
+    width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(14,165,233,0.2);
+    color: var(--white); padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    border-color: var(--neon); box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+  }
+  .form-field textarea { resize: vertical; min-height: 100px; }
+  .form-field select option { background: var(--navy2); }
+  .submit-btn {
+    width: 100%; background: var(--grad1); color: #fff; border: none; padding: 1rem;
+    border-radius: 12px; font-family: ' Poppins', sans-serif; font-weight: 700; font-size: 1rem;
+    cursor: pointer; transition: all 0.3s; box-shadow: 0 0 30px rgba(14,165,233,0.3);
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(14,165,233,0.5); }
+  .success-msg {
+    display: none; text-align: center; padding: 2rem;
+    background: rgba(14,165,233,0.05); border: 1px solid rgba(14,165,233,0.2);
+    border-radius: 16px; margin-top: 1rem;
+  }
+  .success-msg .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .success-msg h4 { color: var(--neon); margin-bottom: 0.5rem; }
+  .success-msg p { color: var(--gray); font-size: 0.9rem; }
+
+  /* ---- GAME ---- */
+  #game { background: var(--navy3); }
+  .game-wrap { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; align-items: start; }
+  .game-info h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+  .game-info p { color: var(--gray); font-size: 0.95rem; }
+  .game-box {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.15);
+    border-radius: 24px; padding: 2.5rem; min-height: 400px;
+  }
+  .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+  .game-stats-row { display: flex; gap: 1.5rem; }
+  .game-stat { text-align: center; }
+  .game-stat-val { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--neon); }
+  .game-stat-label { font-size: 0.75rem; color: var(--gray); }
+  .game-progress { height: 6px; background: rgba(255,255,255,0.08); border-radius: 50px; margin-bottom: 2rem; overflow: hidden; }
+  .game-progress-fill { height: 100%; background: var(--grad1); border-radius: 50px; transition: width 0.5s ease; }
+  .game-scenario { background: rgba(14,165,233,0.05); border: 1px solid rgba(14,165,233,0.15); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .game-scenario h4 { color: var(--neon2); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+  .game-scenario p { font-size: 0.95rem; line-height: 1.6; }
+  .game-choices { display: flex; flex-direction: column; gap: 0.8rem; }
+  .choice-btn {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(14,165,233,0.2);
+    color: var(--white); padding: 0.9rem 1.2rem; border-radius: 12px; text-align: left;
+    cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  }
+  .choice-btn:hover { background: rgba(14,165,233,0.08); border-color: var(--neon); transform: translateX(4px); }
+  .choice-btn.correct { background: rgba(14,165,233,0.12); border-color: #22d3ee; color: #7dd3fc; }
+  .choice-btn.wrong { background: rgba(239,68,68,0.1); border-color: #ef4444; color: #fca5a5; }
+  .feedback-box { padding: 1.2rem; border-radius: 12px; margin-top: 1rem; font-size: 0.9rem; line-height: 1.6; }
+  .feedback-box.success { background: rgba(14,165,233,0.08); border: 1px solid rgba(14,165,233,0.3); color: var(--neon2); }
+  .feedback-box.fail { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
+  .next-btn {
+    background: var(--grad1); color: #fff; border: none; padding: 0.8rem 1.5rem;
+    border-radius: 10px; font-family: 'Poppins', sans-serif; font-weight: 600;
+    cursor: pointer; margin-top: 1rem; transition: all 0.3s;
+  }
+  .next-btn:hover { transform: translateY(-2px); }
+  .game-over { text-align: center; padding: 2rem 0; }
+  .game-over h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .game-over .final-score { font-size: 4rem; font-weight: 800; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 1rem 0; }
+  .restart-btn {
+    background: var(--grad1); color: #fff; border: none; padding: 0.9rem 2rem;
+    border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 700;
+    cursor: pointer; transition: all 0.3s; font-size: 1rem;
+  }
+  .restart-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(14,165,233,0.4); }
+
+  /* ---- KUIS ---- */
+  #kuis { background: linear-gradient(to bottom, var(--navy3), var(--navy2)); }
+  .kuis-container { max-width: 700px; margin: 0 auto; }
+  .kuis-box {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.15);
+    border-radius: 24px; padding: 2.5rem;
+  }
+  .kuis-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+  .kuis-progress-text { color: var(--gray); font-size: 0.9rem; }
+  .kuis-score-badge { background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.3); color: var(--neon); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; }
+  .kuis-question { font-size: 1.15rem; font-weight: 600; margin-bottom: 1.5rem; line-height: 1.5; }
+  .kuis-options { display: flex; flex-direction: column; gap: 0.8rem; }
+  .kuis-option {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(14,165,233,0.2);
+    color: var(--white); padding: 0.9rem 1.2rem; border-radius: 12px; text-align: left;
+    cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .kuis-option:hover:not(:disabled) { background: rgba(14,165,233,0.08); border-color: var(--neon); }
+  .kuis-option .opt-letter { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; border: 1px solid rgba(14,165,233,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; }
+  .kuis-option.correct { background: rgba(14,165,233,0.1); border-color: #22d3ee; }
+  .kuis-option.wrong { background: rgba(239,68,68,0.08); border-color: #ef4444; }
+  .kuis-option.correct .opt-letter { background: #22d3ee; color: var(--navy); border-color: #22d3ee; }
+  .kuis-option.wrong .opt-letter { background: #ef4444; color: #fff; border-color: #ef4444; }
+  .kuis-feedback { padding: 1rem; border-radius: 10px; margin-top: 1rem; font-size: 0.9rem; }
+  .kuis-feedback.correct { background: rgba(14,165,233,0.08); color: var(--neon2); }
+  .kuis-feedback.wrong { background: rgba(239,68,68,0.08); color: #fca5a5; }
+  .kuis-nav { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
+  .kuis-next { background: var(--grad1); color: #fff; border: none; padding: 0.8rem 1.8rem; border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+  .kuis-next:hover { transform: translateY(-2px); }
+  .kuis-result { text-align: center; padding: 1rem 0; }
+  .kuis-result h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .kuis-final { font-size: 3.5rem; font-weight: 800; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 1rem 0; }
+  .kuis-retake { background: var(--grad1); color: #fff; border: none; padding: 0.9rem 2rem; border-radius: 50px; font-family: 'Poppins', sans-serif; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+  .kuis-retake:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(14,165,233,0.4); }
+
+  /* ---- PORTFOLIO ---- */
+  #portfolio { background: var(--navy2); }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .port-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.1);
+    border-radius: 20px; overflow: hidden; transition: all 0.4s;
+  }
+  .port-card:hover { transform: translateY(-8px); border-color: rgba(14,165,233,0.3); box-shadow: 0 20px 60px rgba(14,165,233,0.1); }
+  .port-img {
+    height: 180px; display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; position: relative; overflow: hidden;
+  }
+  .port-content { padding: 1.5rem; }
+  .port-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+  .port-tag { font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 50px; border: 1px solid rgba(14,165,233,0.3); color: var(--neon); }
+  .port-content h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .port-content p { color: var(--gray); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem; }
+  .port-link { color: var(--neon); font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.3s; }
+  .port-link:hover { gap: 0.6rem; }
+
+  /* ---- DAMPAK ---- */
+  #dampak { background: linear-gradient(to bottom, var(--navy2), var(--navy)); }
+  .dampak-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+  .dampak-card {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.1);
+    border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.4s;
+  }
+  .dampak-card:hover { transform: translateY(-6px); border-color: rgba(14,165,233,0.3); }
+  .dampak-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .dampak-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .dampak-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.6; }
+  .dampak-num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0.5rem 0; }
+  .infografis { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .info-step {
+    background: rgba(14,165,233,0.05); border: 1px solid rgba(14,165,233,0.15);
+    border-radius: 16px; padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .step-num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+  .step-text h4 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .step-text p { color: var(--gray); font-size: 0.82rem; }
+
+  /* ---- TESTIMONI ---- */
+  #testimoni { background: var(--navy); }
+  .testimonial-slider { position: relative; overflow: hidden; }
+  .testimonial-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); }
+  .testimonial-card {
+    min-width: calc(33.333% - 1rem); margin-right: 1.5rem;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(14,165,233,0.1);
+    border-radius: 20px; padding: 2rem; flex-shrink: 0; transition: all 0.3s;
+  }
+  .testimonial-card:hover { border-color: rgba(14,165,233,0.3); }
+  .testi-stars { color: #fbbf24; margin-bottom: 1rem; font-size: 1.1rem; letter-spacing: 0.1em; }
+  .testi-quote { font-size: 0.95rem; color: var(--white2); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+  .testi-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; font-family: 'Poppins', sans-serif; }
+  .testi-name { font-weight: 600; font-size: 0.95rem; }
+  .testi-role { color: var(--gray); font-size: 0.82rem; }
+  .slider-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2rem; }
+  .slider-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.3); color: var(--neon); cursor: pointer; transition: all 0.3s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+  .slider-btn:hover { background: rgba(14,165,233,0.2); transform: scale(1.1); }
+  .slider-dots { display: flex; gap: 0.5rem; }
+  .slider-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s; }
+  .slider-dot.active { background: var(--neon); width: 24px; border-radius: 50px; }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--navy2); border-top: 1px solid rgba(14,165,233,0.1);
+    padding: 3rem 5% 2rem; text-align: center;
+  }
+  .footer-logo { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 800; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; }
+  .footer-desc { color: var(--gray); font-size: 0.9rem; max-width: 400px; margin: 0 auto 2rem; }
+  .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+  .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--neon); }
+  .footer-bottom { color: rgba(148,163,184,0.5); font-size: 0.82rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.05); } }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes pulse2 { 0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 0.8; transform: translate(-50%,-50%) scale(1.2); } }
+  @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(400px); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    .tools-wrap, .konsultasi-grid, .game-wrap { grid-template-columns: 1fr; }
+    .testimonial-card { min-width: calc(50% - 0.75rem); }
+    .form-row { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    nav .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 70px 0 0 0; background: rgba(5,13,26,0.97); padding: 2rem 5%; gap: 1.5rem; z-index: 99; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .testimonial-card { min-width: 100%; }
+    .hero-stats { gap: 2rem; }
+    section { padding: 4rem 5%; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">SmartBiz</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#solutions">Solusi</a></li>
+    <li><a href="#tools">Analisis</a></li>
+    <li><a href="#konsultasi">Konsultasi</a></li>
+    <li><a href="#game">Game</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#dampak">Dampak</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('konsultasi').scrollIntoView({behavior:'smooth'})">Mulai Konsultasi</button>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-orb orb3"></div>
+  <div class="hero-badge"><span class="dot"></span> Platform Inovasi Digital Terdepan 2025</div>
+  <h1 class="hero-title">
+    <span class="line1">Solusi Cerdas</span>
+    <span class="line2">untuk Bisnis Modern</span>
+    <span class="line3">Smart Business: Inovasi Digital untuk Solusi Ekonomi Modern</span>
+  </h1>
+  <p class="hero-desc">Transformasi digital UMKM dan usaha Anda dengan platform terintegrasi — analisis cerdas, strategi tepat, dan pertumbuhan nyata.</p>
+  <div class="hero-btns">
+    <a href="#konsultasi" class="btn-primary">🚀 Mulai Konsultasi</a>
+    <a href="#solutions" class="btn-secondary">Jelajahi Solusi →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" data-target="5000">0</div><div class="stat-label">UMKM Terbantu</div></div>
+    <div class="stat"><div class="stat-num" data-target="98">0</div><div class="stat-label">% Kepuasan</div></div>
+    <div class="stat"><div class="stat-num" data-target="120">0</div><div class="stat-label">Kota Terjangkau</div></div>
+    <div class="stat"><div class="stat-num" data-target="15">0</div><div class="stat-label">Mitra Strategis</div></div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="section-header reveal">
+    <div class="section-label">⚡ Solusi Digital</div>
+    <h2 class="section-title">Smart Business <span>Solution</span></h2>
+    <p class="section-desc">Ekosistem lengkap untuk mengakselerasi pertumbuhan bisnis Anda di era digital.</p>
+  </div>
+  <div class="solutions-grid">
+    <div class="sol-card reveal" style="transition-delay:0.1s">
+      <div class="sol-icon" style="background:rgba(14,165,233,0.1)">📊</div>
+      <h3>Analisis Bisnis AI</h3>
+      <p>Dapatkan insight mendalam tentang kondisi bisnis Anda menggunakan teknologi kecerdasan buatan. Identifikasi peluang dan tantangan secara real-time.</p>
+      <span class="sol-tag" style="border-color:rgba(14,165,233,0.4);color:#38bdf8">AI-Powered</span>
+    </div>
+    <div class="sol-card reveal" style="transition-delay:0.15s">
+      <div class="sol-icon" style="background:rgba(139,92,246,0.1)">🎯</div>
+      <h3>Strategi Digital Marketing</h3>
+      <p>Rancang kampanye pemasaran digital yang efektif dengan panduan langkah demi langkah, mulai dari media sosial hingga SEO dan iklan berbayar.</p>
+      <span class="sol-tag" style="border-color:rgba(139,92,246,0.4);color:#a78bfa">Marketing</span>
+    </div>
+    <div class="sol-card reveal" style="transition-delay:0.2s">
+      <div class="sol-icon" style="background:rgba(6,182,212,0.1)">💰</div>
+      <h3>Manajemen Keuangan</h3>
+      <p>Tools sederhana untuk mengelola arus kas, membuat laporan keuangan, dan merencanakan anggaran bisnis dengan mudah tanpa perlu keahlian akuntansi.</p>
+      <span class="sol-tag" style="border-color:rgba(6,182,212,0.4);color:#22d3ee">Keuangan</span>
+    </div>
+    <div class="sol-card reveal" style="transition-delay:0.25s">
+      <div class="sol-icon" style="background:rgba(14,165,233,0.1)">🛒</div>
+      <h3>E-Commerce Integration</h3>
+      <p>Integrasikan toko online Anda dengan berbagai marketplace populer. Kelola inventaris, pesanan, dan pengiriman dari satu dashboard terpusat.</p>
+      <span class="sol-tag" style="border-color:rgba(14,165,233,0.4);color:#38bdf8">E-Commerce</span>
+    </div>
+    <div class="sol-card reveal" style="transition-delay:0.3s">
+      <div class="sol-icon" style="background:rgba(139,92,246,0.1)">🤝</div>
+      <h3>CRM & Loyalitas Pelanggan</h3>
+      <p>Bangun hubungan jangka panjang dengan pelanggan melalui sistem manajemen yang canggih namun mudah digunakan untuk bisnis skala kecil sekalipun.</p>
+      <span class="sol-tag" style="border-color:rgba(139,92,246,0.4);color:#a78bfa">CRM</span>
+    </div>
+    <div class="sol-card reveal" style="transition-delay:0.35s">
+      <div class="sol-icon" style="background:rgba(6,182,212,0.1)">📈</div>
+      <h3>Business Intelligence</h3>
+      <p>Visualisasikan data bisnis Anda dalam dashboard yang intuitif. Buat keputusan berdasarkan data, bukan intuisi semata, untuk hasil yang lebih optimal.</p>
+      <span class="sol-tag" style="border-color:rgba(6,182,212,0.4);color:#22d3ee">Analytics</span>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS ANALYZER -->
+<section id="tools">
+  <div class="section-header reveal">
+    <div class="section-label">🔬 Analisis Interaktif</div>
+    <h2 class="section-title">Analisis <span>Bisnis Anda</span></h2>
+    <p class="section-desc">Masukkan data dasar usaha Anda dan dapatkan rekomendasi strategi yang dipersonalisasi.</p>
+  </div>
+  <div class="tools-wrap">
+    <div class="analyzer-box reveal">
+      <h3>🧠 Kalkulator Bisnis Digital</h3>
+      <div class="form-group">
+        <label>Jenis Usaha</label>
+        <select id="bizType">
+          <option value="">-- Pilih Jenis Usaha --</option>
+          <option value="kuliner">Kuliner / F&B</option>
+          <option value="fashion">Fashion & Tekstil</option>
+          <option value="retail">Retail / Toko</option>
+          <option value="jasa">Jasa / Service</option>
+          <option value="teknologi">Teknologi / Digital</option>
+          <option value="pertanian">Pertanian / Agribisnis</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Lama Berdiri</label>
+        <select id="bizAge">
+          <option value="baru">Baru (< 1 tahun)</option>
+          <option value="berkembang">Berkembang (1–3 tahun)</option>
+          <option value="mapan">Mapan (3–10 tahun)</option>
+          <option value="veteran">Veteran (> 10 tahun)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Jumlah Karyawan: <span id="empCount">5</span> orang</label>
+        <div class="range-wrap">
+          <input type="range" min="1" max="100" value="5" id="empRange" oninput="document.getElementById('empCount').textContent=this.value">
+          <span class="range-val" id="empVal">5</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Anggaran Digital Marketing: <span id="budgetVal">Rp 5 Juta</span>/bulan</label>
+        <div class="range-wrap">
+          <input type="range" min="1" max="50" value="5" id="budgetRange" oninput="updateBudget(this.value)">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tingkat Digitalisasi Saat Ini</label>
+        <select id="digitalLevel">
+          <option value="0">Belum ada (offline sepenuhnya)</option>
+          <option value="25">Rendah (hanya media sosial)</option>
+          <option value="50">Sedang (marketplace + sosmed)</option>
+          <option value="75">Tinggi (website + sistem)</option>
+          <option value="100">Penuh (terintegrasi)</option>
+        </select>
+      </div>
+      <button class="analyze-btn" onclick="analyzeResult()">🔍 Analisis Sekarang</button>
+      <div class="result-box" id="resultBox">
+        <h4>📊 Hasil Analisis & Rekomendasi</h4>
+        <div id="resultContent"></div>
+      </div>
+    </div>
+    <div class="info-cards reveal">
+      <div class="info-card">
+        <h4>💡 Mengapa Digitalisasi Penting?</h4>
+        <p>Bisnis yang telah terdigitalisasi terbukti memiliki pertumbuhan pendapatan 23% lebih tinggi dan mampu menjangkau pasar 10x lebih luas dibanding bisnis konvensional.</p>
+      </div>
+      <div class="info-card">
+        <h4>🚀 Strategi Mulai dari Nol</h4>
+        <p>Tidak perlu khawatir jika baru memulai digitalisasi. Platform kami menyediakan panduan bertahap yang disesuaikan dengan kapasitas dan budget bisnis Anda saat ini.</p>
+      </div>
+      <div class="info-card">
+        <h4>📱 Mobile-First Approach</h4>
+        <p>73% konsumen Indonesia menggunakan smartphone untuk berbelanja. Kami memastikan solusi yang kami rekomendasikan optimal untuk platform mobile.</p>
+      </div>
+      <div class="info-card">
+        <h4>🎓 Pelatihan & Pendampingan</h4>
+        <p>Setiap solusi dilengkapi dengan video tutorial Bahasa Indonesia, sesi pelatihan daring, dan tim support yang siap membantu 7 hari seminggu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONSULTASI -->
+<section id="konsultasi">
+  <div class="konsultasi-grid">
+    <div class="konsultasi-info reveal">
+      <div class="section-label">💬 Konsultasi Gratis</div>
+      <h2>Konsultasi Bisnis <span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Digital</span></h2>
+      <p style="color:var(--gray);margin-bottom:2rem">Ceritakan tantangan bisnis Anda. Tim konsultan berpengalaman kami siap memberikan solusi digital yang tepat sasaran dan sesuai budget.</p>
+      <ul class="feature-list">
+        <li>Konsultasi GRATIS tanpa syarat</li>
+        <li>Respons dalam 2 jam kerja</li>
+        <li>Konsultan berpengalaman 10+ tahun</li>
+        <li>Solusi disesuaikan kebutuhan spesifik</li>
+        <li>Follow-up pendampingan 30 hari</li>
+        <li>Laporan analisis bisnis tertulis</li>
+      </ul>
+      <div style="margin-top:2rem;padding:1.5rem;background:rgba(14,165,233,0.05);border:1px solid rgba(14,165,233,0.2);border-radius:16px">
+        <p style="color:var(--neon);font-weight:600;font-size:0.9rem;margin-bottom:0.5rem">📞 Hubungi Langsung</p>
+        <p style="color:var(--gray);font-size:0.88rem">WhatsApp: <a href="https://wa.me/6285123456789" style="color:var(--neon);text-decoration:none">+62 851-2345-6789</a></p>
+        <p style="color:var(--gray);font-size:0.88rem">Email: <a href="mailto:hello@smartbiz.id" style="color:var(--neon);text-decoration:none">hello@smartbiz.id</a></p>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.2s">
+      <div class="konsultasi-form-box">
+        <h3>📝 Formulir Konsultasi</h3>
+        <form id="konsultasiForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Nama Lengkap *</label>
+              <input type="text" id="fNama" placeholder="Nama Anda" required>
+            </div>
+            <div class="form-field">
+              <label>Nomor WhatsApp *</label>
+              <input type="tel" id="fPhone" placeholder="08xx-xxxx-xxxx" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Email *</label>
+            <input type="email" id="fEmail" placeholder="email@domain.com" required>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Jenis Usaha *</label>
+              <select id="fJenis" required>
+                <option value="">Pilih jenis usaha</option>
+                <option>Kuliner / F&B</option>
+                <option>Fashion & Tekstil</option>
+                <option>Retail / Toko</option>
+                <option>Jasa / Service</option>
+                <option>Teknologi / Digital</option>
+                <option>Pertanian / Agribisnis</option>
+                <option>Lainnya</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Skala Bisnis</label>
+              <select id="fSkala">
+                <option>Mikro (1–5 orang)</option>
+                <option>Kecil (6–20 orang)</option>
+                <option>Menengah (21–100 orang)</option>
+                <option>Besar (100+ orang)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Permasalahan Bisnis *</label>
+            <textarea id="fMasalah" placeholder="Ceritakan tantangan atau masalah bisnis yang sedang Anda hadapi. Semakin detail, semakin tepat solusi yang kami berikan..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span>💬</span> Kirim via WhatsApp
+          </button>
+        </form>
+        <div class="success-msg" id="successMsg">
+          <div class="success-icon">✅</div>
+          <h4>Pesan Berhasil Dikirim!</h4>
+          <p>Terima kasih telah menghubungi SmartBiz. Tim konsultan kami akan segera menghubungi Anda dalam 2 jam kerja.</p>
+          <p style="margin-top:0.5rem;color:var(--neon);font-size:0.85rem">Cek WhatsApp Anda untuk konfirmasi otomatis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAME -->
+<section id="game">
+  <div class="game-wrap">
+    <div class="game-info reveal">
+      <div class="section-label">🎮 Mini Game</div>
+      <h2>Simulasi <span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Bisnis</span></h2>
+      <p style="color:var(--gray);margin-bottom:1.5rem">Rasakan pengalaman mengelola bisnis dalam simulasi interaktif. Buat keputusan strategis dan lihat dampaknya terhadap perkembangan usaha Anda!</p>
+      <div style="background:rgba(14,165,233,0.05);border:1px solid rgba(14,165,233,0.2);border-radius:16px;padding:1.5rem;margin-top:1rem">
+        <h4 style="color:var(--neon2);margin-bottom:0.8rem;font-size:0.95rem">🏆 Cara Bermain:</h4>
+        <p style="color:var(--gray);font-size:0.88rem;line-height:1.7">Anda berperan sebagai pemilik UMKM. Setiap ronde, Anda dihadapkan pada situasi bisnis nyata. Pilih keputusan terbaik untuk memaksimalkan skor dan tingkat keberhasilan usaha Anda!</p>
+        <div style="display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap">
+          <div style="background:rgba(14,165,233,0.1);border-radius:10px;padding:0.6rem 1rem;font-size:0.82rem;color:var(--neon)">💰 Kelola Modal</div>
+          <div style="background:rgba(139,92,246,0.1);border-radius:10px;padding:0.6rem 1rem;font-size:0.82rem;color:var(--purple2)">📈 Tingkatkan Omzet</div>
+          <div style="background:rgba(6,182,212,0.1);border-radius:10px;padding:0.6rem 1rem;font-size:0.82rem;color:#22d3ee">🤝 Bangun Relasi</div>
+        </div>
+      </div>
+    </div>
+    <div class="game-box reveal" style="transition-delay:0.2s">
+      <div id="gameContainer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- KUIS -->
+<section id="kuis">
+  <div class="section-header reveal" style="text-align:center">
+    <div class="section-label">🧩 Kuis Interaktif</div>
+    <h2 class="section-title">Uji Pengetahuan <span>Bisnis Digital</span></h2>
+    <p class="section-desc" style="margin:0 auto">Seberapa siap Anda di era ekonomi digital? Jawab 8 pertanyaan ini dan dapatkan evaluasi kemampuan bisnis digital Anda!</p>
+  </div>
+  <div class="kuis-container">
+    <div class="kuis-box reveal" style="transition-delay:0.2s">
+      <div id="kuisContainer"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header reveal">
+    <div class="section-label">💼 Portfolio</div>
+    <h2 class="section-title">Showcase <span>Karya Terbaik</span></h2>
+    <p class="section-desc">Kumpulan proyek inovasi digital yang telah berhasil mentransformasi berbagai bisnis di Indonesia.</p>
+  </div>
+  <div class="portfolio-grid">
+    <div class="port-card reveal" style="transition-delay:0.1s">
+      <div class="port-img" style="background:linear-gradient(135deg,rgba(14,165,233,0.2),rgba(139,92,246,0.2))">🛒</div>
+      <div class="port-content">
+        <div class="port-tags"><span class="port-tag">E-Commerce</span><span class="port-tag">AI</span></div>
+        <h3>WarungDigital Platform</h3>
+        <p>Platform e-commerce terintegrasi untuk warung dan toko kelontong tradisional dengan fitur manajemen stok otomatis dan laporan keuangan harian.</p>
+        <a href="/porto.html" class="port-link">Lihat Detail →</a>
+      </div>
+    </div>
+    <div class="port-card reveal" style="transition-delay:0.15s">
+      <div class="port-img" style="background:linear-gradient(135deg,rgba(139,92,246,0.2),rgba(236,72,153,0.2))">📱</div>
+      <div class="port-content">
+        <div class="port-tags"><span class="port-tag">Mobile App</span><span class="port-tag">UMKM</span></div>
+        <h3>UMKM Connect App</h3>
+        <p>Aplikasi mobile yang menghubungkan UMKM lokal dengan distributor, investor, dan konsumen dalam satu ekosistem digital yang saling menguntungkan.</p>
+        <a href="/porto.html" class="port-link">Lihat Detail →</a>
+      </div>
+    </div>
+    <div class="port-card reveal" style="transition-delay:0.2s">
+      <div class="port-img" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(14,165,233,0.2))">📊</div>
+      <div class="port-content">
+        <div class="port-tags"><span class="port-tag">Dashboard</span><span class="port-tag">Analytics</span></div>
+        <h3>BisnisView Analytics</h3>
+        <p>Dashboard analitik real-time untuk memantau performa penjualan, tren konsumen, dan metrik bisnis kritis dari berbagai saluran penjualan sekaligus.</p>
+        <a href="/porto.html" class="port-link">Lihat Detail →</a>
+      </div>
+    </div>
+    <div class="port-card reveal" style="transition-delay:0.25s">
+      <div class="port-img" style="background:linear-gradient(135deg,rgba(251,191,36,0.15),rgba(14,165,233,0.2))">🤖</div>
+      <div class="port-content">
+        <div class="port-tags"><span class="port-tag">Chatbot</span><span class="port-tag">AI</span></div>
+        <h3>BizBot AI Assistant</h3>
+        <p>Asisten AI berbahasa Indonesia yang membantu pemilik UMKM menjawab pertanyaan pelanggan, memproses pesanan, dan memberikan rekomendasi produk 24/7.</p>
+        <a href="/porto.html" class="port-link">Lihat Detail →</a>
+      </div>
+    </div>
+    <div class="port-card reveal" style="transition-delay:0.3s">
+      <div class="port-img" style="background:linear-gradient(135deg,rgba(139,92,246,0.2),rgba(6,182,212,0.2))">💳</div>
+      <div class="port-content">
+        <div class="port-tags"><span class="port-tag">FinTech</span><span class="port-tag">Pembayaran</span></div>
+        <h3>SmartPay Gateway</h3>
+        <p>Solusi pembayaran digital all-in-one yang mendukung QRIS, transfer bank, kartu kredit, dan dompet digital dengan dashboard rekonsiliasi otomatis.</p>
+        <a href="/porto.html" class="port-link">Lihat Detail →</a>
+      </div>
+    </div>
+    <div class="port-card reveal" style="transition-delay:0.35s">
+      <div class="port-img" style="background:linear-gradient(135deg,rgba(14,165,233,0.2),rgba(251,191,36,0.15))">🌱</div>
+      <div class="port-content">
+        <div class="port-tags"><span class="port-tag">AgriTech</span><span class="port-tag">IoT</span></div>
+        <h3>TaniPintar Platform</h3>
+        <p>Platform pertanian cerdas berbasis IoT dan AI yang membantu petani Indonesia meningkatkan produktivitas, memprediksi cuaca, dan memasarkan hasil panen.</p>
+        <a href="/porto.html" class="port-link">Lihat Detail →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAMPAK -->
+<section id="dampak">
+  <div class="section-header reveal">
+    <div class="section-label">🌍 Dampak Nyata</div>
+    <h2 class="section-title">Membangun <span>Ekosistem Ekonomi</span> Digital</h2>
+    <p class="section-desc">Kontribusi nyata kami dalam memberdayakan UMKM, pelajar, dan pebisnis di seluruh Indonesia.</p>
+  </div>
+  <div class="dampak-grid">
+    <div class="dampak-card reveal" style="transition-delay:0.1s">
+      <div class="dampak-icon">🏪</div>
+      <h3>UMKM</h3>
+      <div class="dampak-num">5,200+</div>
+      <p>Usaha Mikro Kecil Menengah yang telah berhasil melakukan transformasi digital dan meningkatkan omzet rata-rata 40% dalam 6 bulan pertama.</p>
+    </div>
+    <div class="dampak-card reveal" style="transition-delay:0.15s">
+      <div class="dampak-icon">🎓</div>
+      <h3>Pelajar & Mahasiswa</h3>
+      <div class="dampak-num">12,000+</div>
+      <p>Pelajar dan mahasiswa yang mendapat akses ke kurikulum kewirausahaan digital gratis, mempersiapkan generasi muda menghadapi ekonomi masa depan.</p>
+    </div>
+    <div class="dampak-card reveal" style="transition-delay:0.2s">
+      <div class="dampak-icon">💼</div>
+      <h3>Pebisnis Pemula</h3>
+      <div class="dampak-num">3,800+</div>
+      <p>Wirausahawan baru yang berhasil meluncurkan bisnis digital pertama mereka dengan panduan mentoring dan akses ke ekosistem investasi yang kami bangun.</p>
+    </div>
+    <div class="dampak-card reveal" style="transition-delay:0.25s">
+      <div class="dampak-icon">📍</div>
+      <h3>Jangkauan Wilayah</h3>
+      <div class="dampak-num">120 Kota</div>
+      <p>Program kami telah menjangkau 120 kota di 34 provinsi Indonesia, termasuk daerah terpencil yang sering terabaikan dalam transformasi digital.</p>
+    </div>
+  </div>
+  <div class="section-header" style="margin-top:3rem;margin-bottom:2rem">
+    <h3 style="font-size:1.4rem;font-weight:700">Bagaimana Kami Membantu?</h3>
+  </div>
+  <div class="infografis">
+    <div class="info-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-text"><h4>Asesmen Kebutuhan</h4><p>Analisis mendalam kondisi bisnis dan kebutuhan digitalisasi Anda secara gratis</p></div>
+    </div>
+    <div class="info-step reveal" style="transition-delay:0.1s">
+      <div class="step-num">02</div>
+      <div class="step-text"><h4>Rancang Solusi</h4><p>Perancangan roadmap digital yang disesuaikan budget dan skala bisnis Anda</p></div>
+    </div>
+    <div class="info-step reveal" style="transition-delay:0.2s">
+      <div class="step-num">03</div>
+      <div class="step-text"><h4>Implementasi</h4><p>Pendampingan teknis dan pelatihan tim dalam implementasi solusi digital</p></div>
+    </div>
+    <div class="info-step reveal" style="transition-delay:0.3s">
+      <div class="step-num">04</div>
+      <div class="step-text"><h4>Monitoring & Optimasi</h4><p>Evaluasi berkala dan optimasi berkelanjutan untuk memastikan pertumbuhan nyata</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni">
+  <div class="section-header reveal" style="text-align:center">
+    <div class="section-label">💬 Testimoni</div>
+    <h2 class="section-title">Kata Mereka yang <span>Berhasil</span></h2>
+  </div>
+  <div class="testimonial-slider reveal" style="transition-delay:0.2s">
+    <div class="testimonial-track" id="testimonialTrack">
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Setelah bergabung dengan SmartBiz, omzet warung makan saya naik 65% dalam 4 bulan. Kini saya sudah bisa terima pesanan online dari GoFood dan ShopeeFood dengan sistem yang terintegrasi!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(14,165,233,0.2);color:#38bdf8">BD</div>
+          <div><div class="testi-name">Budi Santoso</div><div class="testi-role">Pemilik Warung Makan, Surabaya</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Platform analitik bisnisnya luar biasa. Sekarang saya bisa melihat produk mana yang paling laku, kapan waktu ramai, dan berapa margin keuntungan saya secara real-time di smartphone."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(139,92,246,0.2);color:#a78bfa">SR</div>
+          <div><div class="testi-name">Sari Rahayu</div><div class="testi-role">Pemilik Butik Fashion, Bandung</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Sebagai fresh graduate, saya bingung mau mulai bisnis dari mana. SmartBiz memberikan panduan lengkap dan mentor berpengalaman. Dalam 8 bulan, bisnis digital saya sudah punya 500 pelanggan tetap!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(6,182,212,0.2);color:#22d3ee">AP</div>
+          <div><div class="testi-name">Anisa Putri</div><div class="testi-role">Founder StartUp Digital, Jakarta</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Program konsultasi gratis SmartBiz benar-benar mengubah cara pandang saya terhadap bisnis. Kini toko kelontong saya sudah punya sistem POS digital dan bisa terima pembayaran QRIS dengan mudah."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(14,165,233,0.2);color:#38bdf8">HW</div>
+          <div><div class="testi-name">Hendra Wijaya</div><div class="testi-role">Pemilik Toko Kelontong, Medan</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Materi kuis dan simulasi bisnis di platform ini sangat edukatif. Saya, mahasiswa semester 5, jadi lebih paham strategi digital marketing yang efektif sebelum lulus dan terjun ke dunia kerja."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(139,92,246,0.2);color:#a78bfa">RN</div>
+          <div><div class="testi-name">Rizky Nugraha</div><div class="testi-role">Mahasiswa Manajemen, Yogyakarta</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"SmartBiz membantu kami mengintegrasikan sistem keuangan dan pemasaran dalam satu platform. Efisiensi operasional meningkat 50% dan tim kami bisa fokus pada inovasi produk."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(6,182,212,0.2);color:#22d3ee">DL</div>
+          <div><div class="testi-name">Diana Lestari</div><div class="testi-role">CEO CV Maju Bersama, Semarang</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slider-controls">
+    <button class="slider-btn" onclick="slideTestimoni(-1)">←</button>
+    <div class="slider-dots" id="sliderDots"></div>
+    <button class="slider-btn" onclick="slideTestimoni(1)">→</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SmartBiz</div>
+  <p class="footer-desc">Platform inovasi digital terdepan untuk memberdayakan UMKM dan wirausahawan Indonesia menuju ekonomi digital yang inklusif.</p>
+  <div class="footer-links">
+    <a href="#hero">Beranda</a>
+    <a href="#solutions">Solusi</a>
+    <a href="#tools">Analisis</a>
+    <a href="#konsultasi">Konsultasi</a>
+    <a href="#game">Game</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#dampak">Dampak</a>
+    <a href="#testimoni">Testimoni</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 SmartBiz — Smart Business: Inovasi Digital untuk Solusi Ekonomi Modern</p>
+    <p style="margin-top:0.3rem">Dibuat dengan ❤️ untuk kemajuan UMKM Indonesia</p>
+  </div>
+</footer>
+
+<script>
+// ---- PARTICLES ----
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+function Particle() {
+  this.x = Math.random()*W; this.y = Math.random()*H;
+  this.vx = (Math.random()-0.5)*0.3; this.vy = (Math.random()-0.5)*0.3;
+  this.r = Math.random()*1.5+0.5; this.a = Math.random()*0.4+0.1;
+}
+for(let i=0;i<80;i++) particles.push(new Particle());
+function drawParticles() {
+  ctx.clearRect(0,0,W,H);
+  particles.forEach(p => {
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>W) p.vx*=-1; if(p.y<0||p.y>H) p.vy*=-1;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(14,165,233,${p.a})`; ctx.fill();
+  });
+  particles.forEach((a,i) => particles.slice(i+1).forEach(b => {
+    const d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(d<120) { ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.strokeStyle=`rgba(14,165,233,${0.08*(1-d/120)})`; ctx.lineWidth=0.5; ctx.stroke(); }
+  }));
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ---- NAV ----
+window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>50); });
+function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+
+// ---- COUNTER ANIMATION ----
+function animateCounters() {
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = +el.dataset.target, dur = 2000, step = dur/100;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += target/100; el.textContent = Math.floor(current)+(el.dataset.target==='98'?'%':'+');
+      if(current>=target) { el.textContent=target+(el.dataset.target==='98'?'%':'+'); clearInterval(timer); }
+    }, step);
+  });
+}
+const heroObs = new IntersectionObserver(entries => { if(entries[0].isIntersecting) { animateCounters(); heroObs.disconnect(); } });
+heroObs.observe(document.getElementById('hero'));
+
+// ---- SCROLL REVEAL ----
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// ---- ANALYZER ----
+function updateBudget(v) {
+  const labels = ['1 Juta','2 Juta','3 Juta','5 Juta','7 Juta','10 Juta','15 Juta','20 Juta','30 Juta','50 Juta'];
+  const idx = Math.min(Math.floor(v/5.5), labels.length-1);
+  document.getElementById('budgetVal').textContent = 'Rp '+labels[idx];
+}
+document.getElementById('empRange').addEventListener('input', function() { document.getElementById('empVal').textContent = this.value; });
+
+function analyzeResult() {
+  const type = document.getElementById('bizType').value;
+  const age = document.getElementById('bizAge').value;
+  const emp = +document.getElementById('empRange').value;
+  const digital = +document.getElementById('digitalLevel').value;
+  if(!type) { alert('Silakan pilih jenis usaha terlebih dahulu.'); return; }
+  const potensial = Math.min(100, 50 + (100-digital)*0.3 + (emp>10?15:5));
+  const prioritas = digital < 25 ? 'Digitalisasi Dasar' : digital < 50 ? 'Ekspansi Digital' : 'Optimasi & Skalabilitas';
+  const strategies = {
+    kuliner: ['Daftar GoFood/GrabFood/ShopeeFood','Buat konten foto makanan menarik di Instagram','Sistem POS digital untuk manajemen pesanan'],
+    fashion: ['Buka toko Shopee/Tokopedia','Konten styling video di TikTok','Live selling 3x seminggu'],
+    retail: ['QRIS & payment digital','Sistem inventaris otomatis','Loyalty program digital'],
+    jasa: ['Google My Business','Website portfolio profesional','Sistem booking online'],
+    teknologi: ['SEO & content marketing','Partnership & API integration','SaaS model development'],
+    pertanian: ['Platform tani digital','Koneksi langsung ke konsumen','IoT monitoring lahan']
+  };
+  const strat = strategies[type] || ['Buat profil digital lengkap','Mulai pemasaran media sosial','Implementasi sistem pembayaran digital'];
+  const rb = document.getElementById('resultBox');
+  rb.style.display = 'block';
+  document.getElementById('resultContent').innerHTML = `
+    <div class="result-item"><span>Potensi Digitalisasi</span><span style="color:#38bdf8">${Math.round(potensial)}%</span></div>
+    <div class="result-item"><span>Prioritas Saat Ini</span><span style="color:#a78bfa">${prioritas}</span></div>
+    <div class="result-item"><span>Estimasi ROI (6 bulan)</span><span style="color:#22d3ee">${digital<25?'120–180%':digital<50?'80–130%':'40–80%'}</span></div>
+    <div class="score-bar-wrap">
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--gray)"><span>Skor Kesiapan Digital</span><span>${Math.round(digital)}%</span></div>
+      <div class="score-bar"><div class="score-fill" style="width:0%" id="scoreFill"></div></div>
+    </div>
+    <div style="margin-top:1rem;font-size:0.85rem;color:var(--gray)"><strong style="color:var(--neon2)">🎯 Rekomendasi Utama:</strong></div>
+    ${strat.map((s,i)=>`<div style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.85rem"><span style="color:var(--neon);font-weight:700">${i+1}.</span><span style="color:var(--white2)">${s}</span></div>`).join('')}
+  `;
+  setTimeout(() => { document.getElementById('scoreFill').style.width = digital+'%'; }, 100);
+}
+
+// ---- FORM ----
+function submitForm(e) {
+  e.preventDefault();
+  const nama = document.getElementById('fNama').value;
+  const phone = document.getElementById('fPhone').value;
+  const email = document.getElementById('fEmail').value;
+  const jenis = document.getElementById('fJenis').value;
+  const masalah = document.getElementById('fMasalah').value;
+  const msg = encodeURIComponent(`*Konsultasi Bisnis SmartBiz*\n\n👤 Nama: ${nama}\n📧 Email: ${email}\n🏪 Jenis Usaha: ${jenis}\n\n💬 Permasalahan:\n${masalah}`);
+  window.open(`https://wa.me/6285123456789?text=${msg}`, '_blank');
+  document.getElementById('konsultasiForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+  setTimeout(() => { document.getElementById('konsultasiForm').style.display = 'block'; document.getElementById('successMsg').style.display = 'none'; document.getElementById('konsultasiForm').reset(); }, 6000);
+}
+
+// ---- GAME ----
+const gameScenarios = [
+  { q: "Bisnis kuliner Anda baru berdiri 3 bulan. Seorang investor menawarkan modal besar dengan imbalan 60% saham. Apa keputusan Anda?", choices: [{t:"Terima saja, modal penting",ok:false,f:"Kurang tepat! 60% saham berarti Anda kehilangan kendali atas bisnis. Cari investor dengan deal yang lebih seimbang (max 30-40% untuk early stage)."},{t:"Tolak dan cari modal lain",ok:true,f:"Tepat! 60% terlalu besar. Bootstrap lebih dulu atau cari angel investor dengan equity yang lebih kecil. Kontrol bisnis sangat penting di awal."},{t:"Minta waktu dan evaluasi ulang",ok:true,f:"Bijak! Selalu negosiasi dan evaluasi sebelum memutuskan. Bisa juga konsultasikan dengan mentor bisnis terlebih dahulu."}] },
+  { q: "Omzet toko online Anda stagnan 3 bulan berturut-turut meski produk bagus. Budget marketing terbatas. Langkah terbaik?", choices: [{t:"Pasang iklan berbayar besar-besaran",ok:false,f:"Risiko tinggi tanpa data yang cukup. Iklan berbayar tanpa riset target audience bisa membuang budget sia-sia."},{t:"Fokus pada konten organik & komunitas",ok:true,f:"Strategi cerdas! Bangun komunitas, buat konten edukatif, dan manfaatkan UGC. Lebih sustainable dan membangun brand jangka panjang."},{t:"Diskon besar-besaran setiap hari",ok:false,f:"Berbahaya! Diskon terus-menerus merusak persepsi nilai produk dan margin keuntungan. Ini bukan solusi jangka panjang."}] },
+  { q: "Ada tren viral di TikTok yang relevan dengan produk Anda. Anda harus memposting konten dalam 2 jam. Apa yang dilakukan?", choices: [{t:"Lewati saja, konten butuh waktu perencanaan",ok:false,f:"Peluang hilang! Tren viral bersifat sementara. Kecepatan sangat penting dalam memanfaatkan momen viral untuk awareness bisnis."},{t:"Buat konten cepat yang autentik dan relevan",ok:true,f:"Benar! Konten autentik dan cepat > konten sempurna terlambat. Gunakan smartphone, lighting sederhana, dan fokus pada pesan yang relevan."},{t:"Tiru konten kompetitor persis",ok:false,f:"Salah arah! Plagiarisme konten merusak reputasi brand. Jadilah unik, tambahkan perspektif khas bisnis Anda."}] },
+  { q: "Anda punya modal Rp 10 juta. Bisnis Anda perlu website baru ATAU tambah stok produk. Mana prioritas?", choices: [{t:"Website profesional seharga Rp 10 juta",ok:false,f:"Terlalu mahal untuk saat ini! Website bisa dimulai dari Rp 500rb-2jt. Sisanya lebih baik untuk stok yang langsung menghasilkan pendapatan."},{t:"Tambah stok produk Rp 8 juta + website sederhana Rp 2 juta",ok:true,f:"Strategi terbaik! Alokasi yang seimbang — stok menghasilkan cashflow, website membangun credibility. Bisa upgrade website nanti."},{t:"Semua untuk stok, website nanti saja",ok:false,f:"Setengah benar. Di era digital, kehadiran online penting. Bahkan landing page sederhana gratis (Google Sites, Carrd) sudah cukup untuk memulai."}] },
+  { q: "Seorang pelanggan memberikan review negatif 1 bintang di Google Maps. Respons Anda?", choices: [{t:"Hapus review tersebut",ok:false,f:"Tidak bisa dilakukan dan kontraproduktif! Review negatif yang ditanggapi dengan baik justru meningkatkan kepercayaan calon pelanggan baru."},{t:"Balas dengan profesional, tawarkan solusi",ok:true,f:"Sempurna! Respons profesional menunjukkan Anda peduli. Ini juga sinyal positif untuk pelanggan lain bahwa bisnis Anda responsif dan bertanggung jawab."},{t:"Abaikan saja, fokus pelanggan lain",ok:false,f:"Bahaya! Review negatif yang diabaikan merusak reputasi. 89% konsumen membaca respons pemilik bisnis sebelum memutuskan berbelanja."}] },
+];
+
+let gameState = { scenario: 0, score: 0, answered: false };
+function renderGame() {
+  const gc = document.getElementById('gameContainer');
+  if(gameState.scenario >= gameScenarios.length) {
+    const pct = Math.round((gameState.score/gameScenarios.length)*100);
+    gc.innerHTML = `<div class="game-over"><h3>Game Selesai! 🎉</h3><div class="final-score">${gameState.score}/${gameScenarios.length}</div><p style="color:var(--gray);margin-bottom:0.5rem">${pct>=80?'🏆 Luar Biasa! Anda punya naluri bisnis yang kuat!':pct>=60?'👍 Bagus! Terus tingkatkan pengetahuan bisnis Anda!':'📚 Jangan menyerah! Pelajari lebih lanjut tentang strategi bisnis digital.'}</p><p style="color:var(--gray);font-size:0.85rem;margin-bottom:1.5rem">Skor Anda: ${pct}% — ${pct>=80?'Calon Entrepreneur Sukses!':pct>=60?'Pebisnis yang Berkembang':'Pemula yang Bersemangat'}</p><button class="restart-btn" onclick="gameState={scenario:0,score:0,answered:false};renderGame()">🔄 Main Lagi</button></div>`;
+    return;
+  }
+  const s = gameScenarios[gameState.scenario];
+  const prog = ((gameState.scenario)/gameScenarios.length)*100;
+  gc.innerHTML = `
+    <div class="game-header">
+      <div class="game-stats-row">
+        <div class="game-stat"><div class="game-stat-val">${gameState.score}</div><div class="game-stat-label">Skor</div></div>
+        <div class="game-stat"><div class="game-stat-val">${gameState.scenario+1}/${gameScenarios.length}</div><div class="game-stat-label">Skenario</div></div>
+      </div>
+    </div>
+    <div class="game-progress"><div class="game-progress-fill" style="width:${prog}%"></div></div>
+    <div class="game-scenario"><h4>💼 Situasi Bisnis</h4><p>${s.q}</p></div>
+    <div class="game-choices" id="gameChoices">
+      ${s.choices.map((c,i)=>`<button class="choice-btn" onclick="chooseGame(${i})">${['A','B','C'][i]}. ${c.t}</button>`).join('')}
+    </div>
+    <div id="gameFeedback"></div>
+  `;
+}
+function chooseGame(idx) {
+  if(gameState.answered) return;
+  gameState.answered = true;
+  const s = gameScenarios[gameState.scenario];
+  const ch = s.choices[idx];
+  const btns = document.querySelectorAll('.choice-btn');
+  btns.forEach((b,i) => { b.disabled=true; if(s.choices[i].ok) b.classList.add('correct'); });
+  if(!ch.ok) btns[idx].classList.add('wrong');
+  if(ch.ok) gameState.score++;
+  document.getElementById('gameFeedback').innerHTML = `<div class="feedback-box ${ch.ok?'success':'fail'}">${ch.ok?'✅':'❌'} ${ch.f}</div><button class="next-btn" onclick="gameState.scenario++;gameState.answered=false;renderGame()">${gameState.scenario+1<gameScenarios.length?'Lanjut →':'Lihat Hasil 🏆'}</button>`;
+}
+renderGame();
+
+// ---- KUIS ----
+const kuisData = [
+  {q:"Apa kepanjangan dari SEO dalam konteks digital marketing?",opts:["Search Engine Optimization","Social Engagement Online","Sales Enhancement Operation","System Evaluation Output"],ans:0,exp:"SEO (Search Engine Optimization) adalah proses mengoptimalkan website agar muncul di posisi teratas hasil pencarian organik Google dan mesin pencari lainnya."},
+  {q:"Platform media sosial mana yang paling efektif untuk menjangkau konsumen berusia 18-25 tahun di Indonesia saat ini?",opts:["Facebook","Twitter/X","TikTok","LinkedIn"],ans:2,exp:"TikTok mendominasi penggunaan Gen Z di Indonesia dengan 157 juta pengguna aktif. Konten video pendek sangat efektif untuk engagement demografis 18-25 tahun."},
+  {q:"Apa yang dimaksud dengan ROAS (Return on Ad Spend) sebesar 400%?",opts:["Iklan gagal total","Setiap Rp 1 yang diiklankan menghasilkan Rp 4 pendapatan","Biaya iklan 4x lipat pendapatan","ROI mencapai 400 juta rupiah"],ans:1,exp:"ROAS 400% berarti setiap Rp 1.000 yang diinvestasikan untuk iklan menghasilkan Rp 4.000 pendapatan. ROAS minimum yang ideal untuk UMKM adalah 200-300%."},
+  {q:"Fitur apa yang paling penting dimiliki sebuah website UMKM untuk meningkatkan konversi?",opts:["Animasi yang mewah","Tombol CTA yang jelas dan halaman loading cepat","Warna yang banyak","Banyak gambar beresolusi tinggi"],ans:1,exp:"CTA (Call-to-Action) yang jelas dan loading cepat (< 3 detik) adalah faktor terpenting konversi. 53% pengguna meninggalkan website yang loadingnya > 3 detik."},
+  {q:"Apa itu QRIS dalam ekosistem pembayaran digital Indonesia?",opts:["Quick Response Indonesian Standard","QR Code Indonesian Standard","Quality Rating Indonesian System","Quick Retail Integration System"],ans:1,exp:"QRIS (QR Code Indonesian Standard) adalah standar QR Code pembayaran nasional yang ditetapkan Bank Indonesia. Satu QR Code bisa menerima pembayaran dari semua aplikasi dompet digital."},
+  {q:"Manakah strategi yang BUKAN merupakan bagian dari digital marketing?",opts:["Email marketing","Pasang spanduk di jalan raya","Content marketing","Influencer marketing"],ans:1,exp:"Spanduk di jalan raya adalah pemasaran offline/konvensional. Digital marketing mencakup semua aktivitas pemasaran yang dilakukan melalui platform dan saluran digital."},
+  {q:"Berapa persentase konsumen Indonesia yang menggunakan smartphone untuk riset produk sebelum membeli?",opts:["35%","52%","78%","91%"],ans:2,exp:"Sekitar 78% konsumen Indonesia melakukan riset produk melalui smartphone sebelum memutuskan pembelian. Ini menunjukkan betapa pentingnya kehadiran digital yang optimal untuk bisnis."},
+  {q:"Apa fungsi utama Google Analytics untuk bisnis digital?",opts:["Mengelola akun email","Memantau dan menganalisis perilaku pengunjung website","Membuat iklan di Google","Mengelola media sosial"],ans:1,exp:"Google Analytics adalah platform gratis Google untuk memantau traffic website: siapa pengunjungnya, dari mana datang, halaman apa yang dikunjungi, dan konversi. Data ini krusial untuk optimasi bisnis digital."},
+];
+let kuisState = { q: 0, score: 0, answered: false };
+function renderKuis() {
+  const kc = document.getElementById('kuisContainer');
+  if(kuisState.q >= kuisData.length) {
+    const pct = Math.round((kuisState.score/kuisData.length)*100);
+    const grade = pct>=87?'🏆 Ahli Digital':pct>=62?'📈 Sedang Berkembang':pct>=37?'📚 Perlu Belajar Lebih':'🌱 Pemula';
+    kc.innerHTML = `<div class="kuis-result"><h3>Kuis Selesai! 🎓</h3><div class="kuis-final">${kuisState.score}/${kuisData.length}</div><div style="font-size:1.2rem;margin-bottom:1rem">${grade}</div><p style="color:var(--gray);margin-bottom:1.5rem">Skor Anda ${pct}% — ${pct>=75?'Pengetahuan digital marketing Anda sudah sangat baik!':pct>=50?'Pengetahuan Anda cukup, terus tingkatkan!':'Jangan berhenti belajar! Ekosistem digital terus berkembang.'}</p><button class="kuis-retake" onclick="kuisState={q:0,score:0,answered:false};renderKuis()">🔄 Ulangi Kuis</button></div>`;
+    return;
+  }
+  const d = kuisData[kuisState.q];
+  kc.innerHTML = `
+    <div class="kuis-header">
+      <span class="kuis-progress-text">Pertanyaan ${kuisState.q+1} dari ${kuisData.length}</span>
+      <span class="kuis-score-badge">Skor: ${kuisState.score}</span>
+    </div>
+    <div style="height:4px;background:rgba(255,255,255,0.08);border-radius:50px;margin-bottom:1.5rem;overflow:hidden"><div style="height:100%;width:${(kuisState.q/kuisData.length)*100}%;background:linear-gradient(90deg,#0ea5e9,#8b5cf6);transition:width 0.5s ease;border-radius:50px"></div></div>
+    <p class="kuis-question">${d.q}</p>
+    <div class="kuis-options">
+      ${d.opts.map((o,i)=>`<button class="kuis-option" onclick="answerKuis(${i})"><span class="opt-letter">${['A','B','C','D'][i]}</span>${o}</button>`).join('')}
+    </div>
+    <div id="kuisFeedback"></div>
+    <div class="kuis-nav"><button class="kuis-next" id="kuisNext" style="display:none" onclick="kuisState.q++;kuisState.answered=false;renderKuis()">${kuisState.q+1<kuisData.length?'Pertanyaan Berikutnya →':'Lihat Hasil 🎓'}</button></div>
+  `;
+}
+function answerKuis(idx) {
+  if(kuisState.answered) return;
+  kuisState.answered = true;
+  const d = kuisData[kuisState.q];
+  const btns = document.querySelectorAll('.kuis-option');
+  btns.forEach((b,i) => { b.disabled=true; if(i===d.ans) b.classList.add('correct'); });
+  if(idx!==d.ans) btns[idx].classList.add('wrong');
+  if(idx===d.ans) kuisState.score++;
+  document.getElementById('kuisFeedback').innerHTML = `<div class="kuis-feedback ${idx===d.ans?'correct':'wrong'}">${idx===d.ans?'✅ Benar!':'❌ Kurang tepat!'} ${d.exp}</div>`;
+  document.getElementById('kuisNext').style.display = 'block';
+}
+renderKuis();
+
+// ---- TESTIMONIAL SLIDER ----
+let currentSlide = 0;
+const track = document.getElementById('testimonialTrack');
+const cards = track.querySelectorAll('.testimonial-card');
+const totalSlides = Math.max(0, cards.length - (window.innerWidth > 900 ? 2 : window.innerWidth > 600 ? 1 : 0));
+function buildDots() {
+  const dots = document.getElementById('sliderDots');
+  const count = Math.ceil(cards.length / (window.innerWidth > 900 ? 3 : window.innerWidth > 600 ? 2 : 1));
+  dots.innerHTML = Array.from({length: count}, (_,i)=>`<div class="slider-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></div>`).join('');
+}
+buildDots();
+function goToSlide(n) {
+  const cardW = cards[0].offsetWidth + 24;
+  const maxSlide = cards.length - (window.innerWidth>900?3:window.innerWidth>600?2:1);
+  currentSlide = Math.max(0, Math.min(n, maxSlide));
+  track.style.transform = `translateX(-${currentSlide*cardW}px)`;
+  document.querySelectorAll('.slider-dot').forEach((d,i)=>d.classList.toggle('active',i===currentSlide));
+}
+function slideTestimoni(dir) { goToSlide(currentSlide+dir); }
+setInterval(() => { goToSlide(currentSlide + 1 > (cards.length - (window.innerWidth>900?3:2)) ? 0 : currentSlide + 1); }, 5000);
+</script>
+</body>
+</html>
